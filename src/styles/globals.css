@@ -1,3 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Oxygen:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.display-md-light {
+    @apply font-oswald text-[36px] leading-[44px] font-light
+}
+
+.display-md-regular {
+    @apply font-oswald text-[36px] leading-[44px] 
+}
+
+.display-md-semibold {
+    @apply font-oswald text-[36px] leading-[44px] font-semibold
+}
+
+.display-md-bold {
+    @apply font-oswald text-[36px] leading-[44px] font-bold
+}
+
+.display-sm-light {
+    @apply font-oswald text-[30px] leading-[38px] font-light
+}
+
+.display-sm-regular {
+    @apply font-oswald text-[30px] leading-[38px] 
+}
+
+.display-sm-semibold {
+    @apply font-oswald text-[30px] leading-[38px] font-semibold
+}
+
+.display-sm-bold {
+    @apply font-oswald text-[30px] leading-[38px] font-bold
+}
+
+.display-xs-light {
+    @apply font-oswald text-[24px] leading-[32px] font-light
+}
+
+.display-xs-regular {
+    @apply font-oswald text-[24px] leading-[32px] 
+}
+
+.display-xs-semibold {
+    @apply font-oswald text-[24px] leading-[32px] font-semibold
+}
+
+.display-xs-bold {
+    @apply font-oswald text-[24px] leading-[32px] font-bold
+}
+
+.text-xl-light {
+    @apply font-oxygen text-[20px] leading-[20px] font-light
+}
+
+.text-xl-regular {
+    @apply font-oxygen text-[20px] leading-[20px] 
+}
+
+.text-xl-bold {
+    @apply font-oxygen text-[20px] leading-[20px] font-bold
+}
+
+.text-lg-light {
+    @apply font-oxygen text-[18px] leading-[28px] font-light
+}
+
+.text-lg-regular {
+    @apply font-oxygen text-[18px] leading-[28px] 
+}
+
+.text-lg-bold {
+    @apply font-oxygen text-[18px] leading-[28px] font-bold
+}
+
+.text-md-light {
+    @apply font-oxygen text-[16px] leading-[24px] font-light
+}
+
+.text-md-regular {
+    @apply font-oxygen text-[16px] leading-[24px] 
+}
+
+.text-md-bold {
+    @apply font-oxygen text-[16px] leading-[24px] font-bold
+}
+
+.text-sm-light {
+    @apply font-oxygen text-[14px] leading-[20px] font-light
+}
+
+.text-sm-regular {
+    @apply font-oxygen text-[14px] leading-[20px] 
+}
+
+.text-sm-bold {
+    @apply font-oxygen text-[14px] leading-[20px] font-bold
+}
+
+.text-xs-light {
+    @apply font-oxygen text-[12px] leading-[18px] font-light
+}
+
+.text-xs-regular {
+    @apply font-oxygen text-[12px] leading-[18px] 
+}
+
+.text-xs-bold {
+    @apply font-oxygen text-[12px] leading-[18px] font-bold
+}
