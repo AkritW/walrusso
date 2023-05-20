@@ -3,6 +3,8 @@ import React from "react";
 import Image from 'next/image'
 import HeadBar from "./components/HeadBar"
 import InitialScreen from "~/pages/components/InitialScreen";
+import Link from 'next/link'
+
 
 const Home: NextPage = () => {
   return (
@@ -21,8 +23,7 @@ const Home: NextPage = () => {
             </div>
             <div className="text-sm-regular text-gray-500 text-center">
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <div>Don't have an account? <span className="inline text-sm-semibold text-orange-600"><a href="/signup">Sign up</a></span></div>
-
+                <div>Don't have an account? <span className="inline text-sm-semibold text-orange-600"><Link href="/signup">Sign up</Link></span></div>
             </div>
         </div>
     </>
