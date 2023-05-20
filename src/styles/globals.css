@@ -83,6 +83,10 @@
     @apply font-oxygen text-[16px] leading-[24px] 
 }
 
+.text-md-medium {
+    @apply font-oxygen text-[16px] leading-[24px] font-medium
+}
+
 .text-md-bold {
     @apply font-oxygen text-[16px] leading-[24px] font-bold
 }
@@ -93,6 +97,10 @@
 
 .text-sm-regular {
     @apply font-oxygen text-[14px] leading-[20px] 
+}
+
+.text-sm-semibold {
+    @apply font-oxygen text-[14px] leading-[20px] font-semibold
 }
 
 .text-sm-bold {
@@ -109,4 +117,16 @@
 
 .text-xs-bold {
     @apply font-oxygen text-[12px] leading-[18px] font-bold
+}
+
+input::placeholder {
+    @apply text-md-medium text-green-300
+}
+
+.button-primary {
+    @apply w-full bg-orange-500 text-md-bold text-white rounded-[8px] h-[44px]
+}
+
+.button-secondary {
+    @apply w-full border-[1px] border-gray-100 text-md-bold text-gray-700 rounded-[8px] h-[44px]
 }
