@@ -4,6 +4,7 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+      'white' :'#ffffff',
       'gray': {
         25: '#F5F4F2',
         100: '#DEDDD7',
