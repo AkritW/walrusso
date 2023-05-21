@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <HeadBarSecondary/>
-      <MenuBar location={4}/>
+      <MenuBar location={2}/>
     </>
   );
 };

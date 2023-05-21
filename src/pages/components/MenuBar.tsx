@@ -1,45 +1,19 @@
 import Image from 'next/image'
 
 export default function MenuBar({location}:{location:number}) {
-    let source1 = "/icons/team.png"
-    let source2 = "/icons/quest.png"
-    let source3 = "/icons/rank.png"
-    let source4 = "/icons/chat.png"
-    if (location == 1){
-        source1 = "/icons/teamOn.png"
-    }else if (location == 2){
-        source2 = "/icons/questOn.png"
-    }else if (location == 3){
-        source3 = "/icons/rankOn.png"
-    }else{
-        source4 = "/icons/chatOn.png"
-    }
-
     return (
-        <div className="flex flex-row w-screen absolute bottom-0 h-[84px] justify-evenly bg-white">
-            <div className="flex flex-col items-center justify-center">
-                <div className="w-[32px] h-[32px]">
-                    <Image alt="" src={source1} width="27" height="23"></Image>
-                </div>
-                <div className="text-sm-regular mt-[5px]">Teams</div>
+        <div className="flex flex-col w-screen absolute bottom-0 h-[84px] justify-evenly bg-white">
+            <div className="flex flex-row w-screen justify-around">
+                <Image alt="" src={(location == 1 ? '/icons/teamOn.png' : '/icons/team.png')} width="38" height="100"/>
+                <Image alt="" src={(location == 2 ? '/icons/questOn.png' : '/icons/quest.png')} width="38" height="100"/>
+                <Image alt="" src={(location == 3 ? '/icons/rankOn.png' : '/icons/rank.png')} width="38" height="100"/>
+                <Image alt="" src={(location == 4 ? '/icons/chatOn.png' : '/icons/chat.png')} width="38" height="100"/>
             </div>
-            <div className="flex flex-col items-center justify-center">
-                <div className="w-[32px] h-[32px]">
-                    <Image alt="" src={source2} width="27" height="23"></Image>
-                </div>
-                <div className="text-sm-regular mt-[5px]">Quests</div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-                <div className="w-[32px] h-[32px]">
-                    <Image alt="" src={source3} width="27" height="23"></Image>
-                </div>
-                <div className="text-sm-regular mt-[5px]">Rank</div>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-                <div className="w-[32px] h-[32px]">
-                    <Image alt="" src={source4} width="27" height="23"></Image>
-                </div>
-                <div className="text-sm-regular mt-[5px]">Chats</div>
+            <div className="flex flex-row w-screen justify-around -mt-[10px]">
+                <p className={`menu-item ${location == 1 ? 'text-orange-400' : ''}`}>Team</p>
+                <p className={`menu-item ${location == 2 ? 'text-orange-400' : ''}`}>Quests</p>
+                <p className={`menu-item ${location == 3 ? 'text-orange-400' : ''}`}>Rank</p>
+                <p className={`menu-item ${location == 4 ? 'text-orange-400' : ''}`}>Chats</p>
             </div>
         </div>
     )
