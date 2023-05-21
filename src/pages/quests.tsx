@@ -5,7 +5,7 @@ import {HeadBarSecondary} from "~/pages/components/HeadBar";
 const Home: NextPage = () => {
   return (
     <>
-      <HeadBarSecondary heading={"Testing"}/>
+      <HeadBarSecondary heading={"Quests"}/>
       <MenuBar location={4}/>
     </>
   );
