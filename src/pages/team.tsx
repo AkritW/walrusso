@@ -6,7 +6,7 @@ import Image from 'next/image'
 const Home: NextPage = () => {
   return (
     <>
-      <HeadBarSecondary/>
+      <HeadBarSecondary heading={"Your Team"}/>
         <div className="flex justify-center w-screen h-screen bg-orange-25">
             <div className="mt-[23px] w-[352px] h-[578px] bg-white flex flex-col items-center">
                 <div className={"mt-[8px] display-sm-semibold text-gray-900"}>Team Walrus</div>
