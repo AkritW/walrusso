@@ -15,6 +15,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await client.connect()
   const db = client.db("wulrusso")
   const collection = db.collection("user")
+  // to do: don't store password in plain text 
+  // will use hmac + salt
   const dbRes = await collection.insertOne(body)
 
 
