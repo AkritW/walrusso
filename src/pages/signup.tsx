@@ -1,10 +1,9 @@
 import { type NextPage } from "next";
 import React from "react";
 import Image from 'next/image'
-import HeadBar from "./components/HeadBar"
 import InitialScreen from "~/pages/components/InitialScreen";
 import Link from 'next/link'
-
+import {HeadBar} from "~/pages/components/HeadBar";
 
 const Home: NextPage = () => {
   return (

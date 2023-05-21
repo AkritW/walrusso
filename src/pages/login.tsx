@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
 import React, {type ChangeEvent} from "react";
 import Image from 'next/image'
-import HeadBar from "./components/HeadBar"
 import InitialScreen from "~/pages/components/InitialScreen";
 import Link from 'next/link'
 import {useState} from "react"
+import {HeadBar} from "~/pages/components/HeadBar";
 
 
 const Home: NextPage = () => {

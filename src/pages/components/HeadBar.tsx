@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-export default function HeadBar() {
+const HeadBar = () => {
     return (
         <div className="flex items-center justify-center w-screen h-[72px] bg-red-500 display-xs-semibold text-white">WALRUSSO</div>
     )
 }
 
-export function HeadBarSecondary() {
+const HeadBarSecondary = () => {
     return (
         <div className="grid grid-cols-2 content-center w-screen h-[72px] bg-red-500">
             <div className="col-span-1 flex flex-row">
@@ -19,3 +19,5 @@ export function HeadBarSecondary() {
         </div>
     )
 }
+
+export {HeadBar, HeadBarSecondary}
