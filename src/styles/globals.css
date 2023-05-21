@@ -134,3 +134,7 @@ input::placeholder {
 .button-secondary {
     @apply w-full border-[1px] border-gray-100 text-md-bold text-gray-700 rounded-[8px] h-[44px]
 }
+
+.button-travel {
+    @apply border-[1px] border-blue-300 rounded-[4px] bg-blue-25 text-sm-regular px-[8px] text-blue-600
+}
