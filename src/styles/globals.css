@@ -115,6 +115,10 @@
     @apply font-oxygen text-[12px] leading-[18px] 
 }
 
+.text-xs-semibold {
+    @apply font-oxygen text-[12px] leading-[18px] font-semibold
+}
+
 .text-xs-bold {
     @apply font-oxygen text-[12px] leading-[18px] font-bold
 }
