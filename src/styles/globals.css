@@ -52,15 +52,15 @@
 }
 
 .text-xl-light {
-    @apply font-oxygen text-[20px] leading-[20px] font-light
+    @apply font-oswald text-[20px] leading-[20px] font-light
 }
 
 .text-xl-regular {
-    @apply font-oxygen text-[20px] leading-[20px] 
+    @apply font-oswald text-[20px] leading-[20px]
 }
 
 .text-xl-bold {
-    @apply font-oxygen text-[20px] leading-[20px] font-bold
+    @apply font-oswald text-[20px] leading-[20px] font-bold
 }
 
 .text-lg-light {
