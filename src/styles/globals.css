@@ -128,7 +128,7 @@ input::placeholder {
 }
 
 .button-primary {
-    @apply w-full bg-orange-500 text-md-bold text-white rounded-[8px] h-[44px]
+    @apply w-full bg-orange-500 hover:bg-orange-600 text-md-bold text-white rounded-[8px] h-[44px]
 }
 
 .button-secondary {
