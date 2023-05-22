@@ -16,7 +16,7 @@ const Profile = ({string}:{string:string}) => {
                     <PreferenceBlock category={"scenery"} text={"travel"}/>
                 </div>
                 <p className="self-start text-sm-medium text-gray-800">Bio</p>
-                <p className="self-start text-xs-medium text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia lectus id est gravida tempus. Sed nulla diam, volutpat ut libero vitae, tristique iaculis tortor. Nam lacinia consequat ipsum. Maecenas.</p>
+                <p className="self-start text-xs-regular text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia lectus id est gravida tempus. Sed nulla diam, volutpat ut libero vitae, tristique iaculis tortor. Nam lacinia consequat ipsum. Maecenas.</p>
             </div>
         </div>
     )

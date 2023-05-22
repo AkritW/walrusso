@@ -11,15 +11,15 @@ interface AuthStatus {
       auth: boolean
     }
 const Home: NextPage = () => {
-  const[inputValue, setInputValue] = useState('')
-  const handleInputChange = (event:ChangeEvent) => {
-      setInputValue((event.target as HTMLTextAreaElement).value )
-      console.log(inputValue)
-  }
+  // const[inputValue, setInputValue] = useState('')
+  // const handleInputChange = (event:ChangeEvent) => {
+  //     setInputValue((event.target as HTMLTextAreaElement).value )
+  //     console.log(inputValue)
+  // }
+  //
+  // const handleClick = () => {
+  //     console.log(inputValue)
 
-  const handleClick = () => {
-      console.log(inputValue)
-   
   const [inputValue, setInputValue] = useState("")
   const handleInputChange = (event: ChangeEvent) => {
     setInputValue((event.target as HTMLTextAreaElement).value)
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           id="email"
           placeholder="Enter your email"
           onChange={handleInputChange}
-          className="mb-[20px] h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4"
+          className="mb-[20px] h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4 placeholder-gray-300"
         />
         <label
           htmlFor="Password"
@@ -69,7 +69,7 @@ const Home: NextPage = () => {
           type="password"
           id="password"
           placeholder="Enter your password"
-          className="mb-[24px] h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4"
+          className="mb-[24px] h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4 placeholder-gray-300"
         />
         <button onClick={handleSubmit} className="button-primary mb-[16px]">
           Log in

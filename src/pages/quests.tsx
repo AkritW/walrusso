@@ -12,10 +12,10 @@ const Home: NextPage = () => {
           <p className="display-xs-semibold text-gray-700">Quests</p>
           <div className="mt-[16px] flex flex-col">
               <div className="w-[100%] bg-white flex flex-row items-center h-[64px] rounded-[8px] shadow-md justify-start">
-                  <Image className="mx-[16px]" src="/icons/team.png" height="0" width="0" style={{ width: 'auto', height: '24px' }} alt=""/>
+                  <Image className="mx-[16px]" src="/icons/team_dark.png" height="0" width="0" sizes="100vw" style={{ width: 'auto', height: '24px' } } alt=""/>
                   <div>
-                      <p className="text-xs-semibold mb-[2px]">12 Days 10:43 hr</p>
-                      <p className="text-lg-regular">Have dinner together</p>
+                      <p className="text-xs-semibold mb-[2px] text-gray-900">12 Days 10:43 hr</p>
+                      <p className="text-lg-light text-gray-900">Have dinner together</p>
                   </div>
                   <div className="w-[75px] h-[48px] bg-yellow-25 rounded-[4px] ml-auto mr-[16px] flex items-center justify-center">
                       <p className="display-xs-semibold text-yellow-400">100pt</p>
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           </div>
       </div>
       </div>
-      <MenuBar location={4}/>
+      <MenuBar location={2}/>
     </>
   );
 };

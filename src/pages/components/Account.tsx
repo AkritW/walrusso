@@ -7,8 +7,8 @@ const Account = ({userID}:{userID:string}) => {
     const name = "name"
     const department = "department"
     return (
-        <div className="flex flex-col items-center justify-start w-screen h-screen backdrop-blur-sm absolute top-[72px] left-0">
-            <div className="w-[334px] h-[616px] mt-[48px] flex flex-col items-center rounded-[12px] bg-gray-25 px-[24px]">
+        <div className="flex flex-col items-center justify-start w-screen h-screen absolute top-[72px] left-0">
+            <div className="w-[334px] h-[616px] mt-[48px] flex flex-col items-center rounded-[12px] bg-white px-[24px] shadow-2xl">
                 <Image src={image_path} alt={""} width={128} height={128} className="rounded-[64px] mt-[32px]"/>
                 <p className="mt-[12px] display-sm-semibold text-gray-800">{name}</p>
                 <p className="mt-[24px] self-start text-md-bold text-gray-800">Department</p>
@@ -18,7 +18,7 @@ const Account = ({userID}:{userID:string}) => {
                     <PreferenceBlock category={"scenery"} text={"travel"}/>
                 </div>
                 <p className="self-start text-md-bold text-gray-800">Bio</p>
-                <p className="self-start text-xs-medium text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia lectus id est gravida tempus. Sed nulla diam, volutpat ut libero vitae, tristique iaculis tortor. Nam lacinia consequat ipsum. Maecenas.</p>
+                <p className="self-start text-xs-regular text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia lectus id est gravida tempus. Sed nulla diam, volutpat ut libero vitae, tristique iaculis tortor. Nam lacinia consequat ipsum. Maecenas.</p>
             </div>
         </div>
     )
