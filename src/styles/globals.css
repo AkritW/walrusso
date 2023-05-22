@@ -99,6 +99,10 @@
     @apply font-oxygen text-[14px] leading-[20px] 
 }
 
+.text-sm-medium {
+    @apply font-oxygen text-[14px] leading-[20px] font-medium
+}
+
 .text-sm-semibold {
     @apply font-oxygen text-[14px] leading-[20px] font-semibold
 }
@@ -113,6 +117,10 @@
 
 .text-xs-regular {
     @apply font-oxygen text-[12px] leading-[18px] 
+}
+
+.text-xs-medium {
+    @apply font-oxygen text-[12px] leading-[18px]  font-medium
 }
 
 .text-xs-semibold {
