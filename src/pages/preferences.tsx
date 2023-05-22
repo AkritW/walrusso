@@ -1,20 +1,21 @@
-import {type NextPage} from "next";
+import { type NextPage } from "next";
 import {HeadBar} from "~/pages/components/HeadBar";
+import Image from 'next/image'
 
 const Home: NextPage = () => {
-  return (
-    <>
-      <HeadBar/>
-      <div className="mt-[60px] mx-[20px] h-[256px] w-[350px] flex flex-col items-center">
-          <div className="display-xs-bold text-gray-900">Preferences</div>
-          <div className="text-md-medium text-gray-900 mt-[32px]">Select topics that match your preferences</div>
-          <div className="mt-[32px] flex flex-row">
-              <input type="checkbox" id="Asia" className="peer/asia hidden"/>
-              <label htmlFor="Asia" className="button-travel">Asia</label>
-          </div>
-      </div>
-    </>
-  );
-};
-
-export default Home;
+    return (
+      <>
+        <HeadBar/>
+        <div className="mx-[20px] flex flex-col items-center justify-center mt-[60px]">
+            <div className="display-xs-bold mb-[32px] text-gray-900">Preferences</div>
+            <div className="display-md-medium mb-[32px] text-grey-900">Select topics that match your preferences</div>
+            <div className="w-full h-[168px] bg-orange-300 text-center text-middle">
+                tags will be here, will make components for it
+            </div>
+            <button className="button-primary mt-[202px]">Done</button>
+        </div>
+      </>
+    );
+  };
+  
+  export default Home;
