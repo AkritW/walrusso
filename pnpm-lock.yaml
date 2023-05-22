@@ -55,6 +55,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
+  k-medoids:
+    specifier: ^1.0.6
+    version: 1.0.6
   mongodb:
     specifier: ^5.5.0
     version: 5.5.0
@@ -3205,6 +3208,10 @@ packages:
       array-includes: 3.1.6
       object.assign: 4.1.4
     dev: true
+
+  /k-medoids@1.0.6:
+    resolution: {integrity: sha512-vqej8pVmQVIbGSii/T+sQNU6vYQFhn9OpvRRfoDgdaGOM2NWojOCgzRTYF7UVbGYG009cl9zm8qeOJQOWNHR9g==}
+    dev: false
 
   /klona@2.0.6:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
