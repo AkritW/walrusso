@@ -8,7 +8,7 @@ const Home: NextPage = () => {
     <>
       <HeadBarSecondary heading={"Your Team"}/>
         <div className="flex justify-center w-screen h-screen bg-orange-25">
-            <div className="mt-[23px] w-[352px] h-[578px] bg-white flex flex-col items-center">
+            <div className="mt-[23px] w-[352px] h-[578px] bg-white flex flex-col items-center rounded-[16px] shadow-lg">
                 <div className={"mt-[8px] display-sm-semibold text-gray-900"}>Team Walrus</div>
                 <div className={"mt-[8px] text-sm-regular text-gray-900"}>From 1 - 31 May 2023</div>
                 <div className="grid grid-cols-4 gap-x-[24px] gap-y-[32px] mt-[16px]">
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                 </div>
             </div>
         </div>
-      <MenuBar location={4}/>
+      <MenuBar location={1}/>
     </>
   );
 };
