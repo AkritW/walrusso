@@ -9,7 +9,7 @@ const HelloFetchPage = () => {
 
   useEffect(() => {
     void (async () => {
-      const response = await fetch("/api/say_hello")
+      const response = await fetch("/api/sayHello")
       console.log(response)
       const data = (await response.json()) as HelloApiResponse
       console.log(data)

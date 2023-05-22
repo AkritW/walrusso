@@ -3,6 +3,7 @@ import MenuBar from "~/pages/components/MenuBar";
 import {HeadBarSecondary} from "~/pages/components/HeadBar";
 import {Profile} from "~/pages/components/Profile";
 
+
 const Home: NextPage = () => {
   return (
     <>

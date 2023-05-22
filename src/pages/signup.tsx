@@ -5,7 +5,29 @@ import InitialScreen from "~/pages/components/InitialScreen";
 import Link from 'next/link'
 import {HeadBar} from "~/pages/components/HeadBar";
 
+interface CreateStatus {
+    acknowledged: boolean,
+    insertedId: string 
+}
+
+
 const Home: NextPage = () => {
+  // todo: where is the input value
+
+  const handleSubmit = async () => {
+    const res = await fetch("/api/createUser/", {
+      method: "POST",
+      body: JSON.stringify({
+        email: "",
+        password: "", // todo: where is input value for password
+      })
+    })
+    const resJson = res.json() as CreateStatus
+    const isCreated = resJson.acknowledged
+
+    // todo: handle popup/redirect
+  }
+
   return (
     <>
         <HeadBar />
