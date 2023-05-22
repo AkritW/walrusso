@@ -10,6 +10,7 @@ interface CreateStatus {
     insertedId: string 
 }
 
+
 const Home: NextPage = () => {
   // todo: where is the input value
 

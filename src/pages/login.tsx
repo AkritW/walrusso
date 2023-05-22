@@ -7,11 +7,19 @@ import { useState } from "react"
 import { HeadBar } from "~/pages/components/HeadBar"
 
 
-
 interface AuthStatus {
       auth: boolean
     }
 const Home: NextPage = () => {
+  const[inputValue, setInputValue] = useState('')
+  const handleInputChange = (event:ChangeEvent) => {
+      setInputValue((event.target as HTMLTextAreaElement).value )
+      console.log(inputValue)
+  }
+
+  const handleClick = () => {
+      console.log(inputValue)
+   
   const [inputValue, setInputValue] = useState("")
   const handleInputChange = (event: ChangeEvent) => {
     setInputValue((event.target as HTMLTextAreaElement).value)

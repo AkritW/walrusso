@@ -99,6 +99,10 @@
     @apply font-oxygen text-[14px] leading-[20px] 
 }
 
+.text-sm-medium {
+    @apply font-oxygen text-[14px] leading-[20px] font-medium
+}
+
 .text-sm-semibold {
     @apply font-oxygen text-[14px] leading-[20px] font-semibold
 }
@@ -113,6 +117,10 @@
 
 .text-xs-regular {
     @apply font-oxygen text-[12px] leading-[18px] 
+}
+
+.text-xs-medium {
+    @apply font-oxygen text-[12px] leading-[18px]  font-medium
 }
 
 .text-xs-semibold {
@@ -133,4 +141,8 @@ input::placeholder {
 
 .button-secondary {
     @apply w-full border-[1px] border-gray-100 text-md-bold text-gray-700 rounded-[8px] h-[44px]
+}
+
+.button-travel {
+    @apply border-[1px] border-blue-300 rounded-[4px] bg-blue-25 text-sm-regular px-[8px] text-blue-600
 }
