@@ -71,6 +71,10 @@
     @apply font-oxygen text-[18px] leading-[28px] 
 }
 
+.text-lg-medium {
+    @apply font-oxygen text-[18px] leading-[28px] font-medium
+}
+
 .text-lg-bold {
     @apply font-oxygen text-[18px] leading-[28px] font-bold
 }
