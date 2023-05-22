@@ -3,7 +3,10 @@ import { env } from "../../env.mjs"
 import { MongoClient } from "mongodb"
 import type User from "./utils/user"
 
-type Body = User
+type Body = {
+  email: string,
+  password: string
+}
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = new MongoClient(env.DB_URL)
