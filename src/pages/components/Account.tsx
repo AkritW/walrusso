@@ -1,27 +1,45 @@
-import Image from 'next/image'
-import {PreferenceBlock} from "~/pages/components/PreferenceBlock";
+import Image from "next/image";
+import MyComponent from "~/pages/components/PreferenceBlock";
 import React from "react";
 
-const Account = (userID:string) => {
-    const image_path = "/teamMembers/Member.png"
-    const name = "name"
-    const department = "department"
-    return (
-        <div className="flex flex-col items-center justify-start w-screen h-screen absolute top-[72px] left-0 bg-orange-25">
-            <div className="w-[334px] h-[616px] mt-[48px] flex flex-col items-center rounded-[12px] bg-white px-[24px] shadow-2xl">
-                <Image src={image_path} alt={""} width={128} height={128} className="rounded-[64px] mt-[32px]"/>
-                <p className="mt-[12px] display-sm-semibold text-gray-800">{name}</p>
-                <p className="mt-[24px] self-start text-md-bold text-gray-800">Department</p>
-                <p className="mt-[8px] self-start text-lg-medium text-gray-800">{department}</p>
-                <p className="mt-[24px] mb-[8px] self-start text-md-bold text-gray-800">Preferences</p>
-                <div className="flex flex-row justify-around mb-[24px]">
-                    <PreferenceBlock category={"scenery"} text={"travel"}/>
-                </div>
-                <p className="self-start text-md-bold text-gray-800">Bio</p>
-                <p className="self-start text-xs-regular text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacinia lectus id est gravida tempus. Sed nulla diam, volutpat ut libero vitae, tristique iaculis tortor. Nam lacinia consequat ipsum. Maecenas.</p>
-            </div>
-        </div>
-    )
-}
+const demo = [
+  "Michele Mazza",
+  "Techlead",
+  ["Mountain", "Yoga", "Pop"],
+  "Hi! I'm Michele Mazza",
+  "Member",
+];
 
-export {Account}
+const preferences = demo[2] as string[];
+const manyTags = preferences.map((e) => <MyComponent text={e} key={e} />);
+console.log(manyTags);
+const Account = () => {
+  return (
+    <div className="absolute left-0 top-[72px] flex h-screen w-screen flex-col items-center justify-start bg-orange-25">
+      <div className="mt-[48px] flex h-[616px] w-[334px] flex-col items-center rounded-[12px] bg-white px-[24px] shadow-2xl">
+        <Image
+          src={`/teamMembers/${demo[4]}.png`}
+          alt={""}
+          width={128}
+          height={128}
+          className="mt-[32px] rounded-[64px]"
+        />
+        <p className="display-sm-semibold mt-[12px] text-gray-800">{demo[0]}</p>
+        <p className="text-md-bold mt-[24px] self-start text-gray-800">
+          Department
+        </p>
+        <p className="text-lg-medium mt-[8px] self-start text-gray-800">
+          {demo[1]}
+        </p>
+        <p className="text-md-bold mb-[8px] mt-[24px] self-start text-gray-800">
+          Preferences
+        </p>
+        <div className="mb-[24px] flex flex-row justify-start">{manyTags}</div>
+        <p className="text-md-bold self-start text-gray-800">Bio</p>
+        <p className="text-xs-regular self-start text-gray-800">{demo[3]}</p>
+      </div>
+    </div>
+  );
+};
+
+export { Account };
