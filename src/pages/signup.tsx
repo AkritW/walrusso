@@ -1,5 +1,5 @@
 import { type NextPage } from "next";
-import React, { ChangeEvent } from "react";
+import React, { type ChangeEvent } from "react";
 import Image from "next/image";
 import InitialScreen from "~/pages/components/InitialScreen";
 import Link from "next/link";
@@ -59,8 +59,9 @@ const Home: NextPage = () => {
         password: passwordValue,
       }),
     });
-    const resJson = res.json() as CreateStatus;
+    const resJson = await res.json() as CreateStatus;
     const isCreated = resJson.acknowledged;
+    console.log(isCreated)
     router.push("/team");
   };
 
