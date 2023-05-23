@@ -18,9 +18,11 @@ const Home: NextPage = () => {
   const [passwordReValue, setpasswordReValue] = useState("");
   const [validMail, setvalidMail] = useState(false);
   const [validPass, setvalidPass] = useState(false);
+  const [validUser, setvalidUser] = useState(true);
   const router = useRouter();
 
   const handleEmailChange = (event: ChangeEvent) => {
+    setvalidUser(true);
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const input = (event.target as HTMLTextAreaElement).value;
     if (emailPattern.test(input)) {
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
   };
 
   const handlePasswordChange = (event: ChangeEvent) => {
+    setvalidUser(true);
     const pass = (event.target as HTMLTextAreaElement).value;
     setpasswordValue(pass);
     if (passwordValue == passwordReValue) {
@@ -42,6 +45,7 @@ const Home: NextPage = () => {
   };
 
   const handlePasswordRepeat = (event: ChangeEvent) => {
+    setvalidUser(true);
     const pass = (event.target as HTMLTextAreaElement).value;
     setpasswordReValue(pass);
     if (passwordValue == passwordReValue) {
@@ -61,7 +65,13 @@ const Home: NextPage = () => {
     });
     const resJson = res.json() as CreateStatus;
     const isCreated = resJson.acknowledged;
-    router.push("/team");
+    if (isCreated) {
+      console.log("logged");
+      router.push("/team");
+    } else {
+      console.log("Out");
+      setvalidUser(false);
+    }
   };
 
   return (
@@ -84,6 +94,9 @@ const Home: NextPage = () => {
         />
         <p className="text-sm-bold text-orange-600" hidden={validMail}>
           Invalid email
+        </p>
+        <p className="text-sm-bold text-orange-600" hidden={validUser}>
+          Invalid credentials
         </p>
         <label
           htmlFor="Password"
