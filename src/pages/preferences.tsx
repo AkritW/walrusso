@@ -3,6 +3,7 @@ import { HeadBar } from "~/pages/components/HeadBar";
 import Image from "next/image";
 import { useEffect } from "react";
 import React, { useState } from "react";
+import Link from "next/link";
 
 interface MyComponentProps {
   text: string;
@@ -28,16 +29,20 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
     ["Vintage car", ["green", "car"]],
     ["Sport car", ["green", "car"]],
   ]);
-  const result = map.get(text);
+  const result = map.get(text) as string[];
   if (result[1] == "-") {
     return (
       <input
         type={"checkbox"}
-        onChange={handleTick}
-        className={`h-[36px] bg-${result[0]}-25 shrink-0 rounded-[4px] px-[8px]`}
+        onChange={(e) => handleTick}
+        className={`h-[36px] bg-${
+          result[0] as string
+        }-25 shrink-0 rounded-[4px] px-[8px]`}
       >
         <p
-          className={`text-small-regular text-${result[0]}-600 inline-block translate-y-[5px]`}
+          className={`text-small-regular text-${
+            result[0] as string
+          }-600 inline-block translate-y-[5px]`}
         >
           {text}
         </p>
@@ -45,18 +50,24 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
     );
   } else {
     return (
-      <div className={`h-[36px] bg-${result[0]}-25 rounded-[4px] px-[8px]`}>
-        <input id={text} type="checkbox" onChange={handleTick} hidden />
+      <div
+        className={`h-[36px] bg-${
+          result[0] as string
+        }-25 rounded-[4px] px-[8px]`}
+      >
+        <input id={text} type="checkbox" onChange={(e) => handleTick} hidden />
         <label htmlFor={text}>
           <Image
             className="mr-[8px] inline-block translate-y-[2px] checked:text-white"
-            src={`/icons/${result[1]}.png`}
+            src={`/icons/${result[1] as string}.png`}
             alt=""
             width={20}
             height={20}
           ></Image>
           <p
-            className={`text-small-regular text-${result[0]}-600 inline-block translate-y-[5px]`}
+            className={`text-small-regular text-${
+              result[0] as string
+            }-600 inline-block translate-y-[5px]`}
           >
             {text}
           </p>
@@ -66,10 +77,9 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
   }
 };
 
-let ticks = [];
-const handleTick = () => {
+const ticks = [];
+const handleTick = (event: Event) => {
   ticks.push((event.target as Element).id);
-  console.log(ticks);
 };
 
 interface InterestAPIResponse {
@@ -90,18 +100,13 @@ const Home: NextPage = () => {
     "Python",
   ];
 
-  //testing data
-  let manyTags = [];
-  data.forEach((i) => {
-    const x = <MyComponent text={i} key={i} />;
-    manyTags.push(x);
-  });
+  const manyTags = data.map((e) => <MyComponent text={e} key={e} />);
 
   useEffect(() => {
     void (async () => {
-      const response = await fetch("/api/interest");
-      console.log(response);
+      const response = await fetch("/api/getInterest");
       const interest = (await response.json()) as InterestAPIResponse;
+      console.log(interest);
       // todo: handle popup/redirect
     })();
   }, []);
@@ -123,12 +128,11 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <button
-          onClick={handleTick}
-          className="button-primary absolute bottom-[178px] left-[20px] !w-[350px]"
-        >
-          Done
-        </button>
+        <Link href={"/team"}>
+          <div className="button-primary align-center text-md-bold absolute bottom-[178px] left-[20px] flex !w-[350px] items-center justify-center">
+            Done
+          </div>
+        </Link>
       </div>
     </>
   );
