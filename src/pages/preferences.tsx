@@ -37,7 +37,7 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
         onChange={(e) => handleTick}
         className={`h-[36px] bg-${
           result[0] as string
-        }-25 shrink-0 rounded-[4px] px-[8px]`}
+        }-25 shrink-0 rounded-[4px] px-[8px] active:bg-${result[0]}-600`}
       >
         <p
           className={`text-small-regular text-${
@@ -50,28 +50,38 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
     );
   } else {
     return (
-      <div
-        className={`h-[36px] bg-${
-          result[0] as string
-        }-25 rounded-[4px] px-[8px]`}
-      >
-        <input id={text} type="checkbox" onChange={(e) => handleTick} hidden />
-        <label htmlFor={text}>
-          <Image
-            className="mr-[8px] inline-block translate-y-[2px] checked:text-white"
-            src={`/icons/${result[1] as string}.png`}
-            alt=""
-            width={20}
-            height={20}
-          ></Image>
-          <p
-            className={`text-small-regular text-${
-              result[0] as string
-            }-600 inline-block translate-y-[5px]`}
-          >
-            {text}
-          </p>
-        </label>
+      <div>
+        <input
+          hidden={true}
+          id={text}
+          className={`peer/1`}
+          type={`checkbox`}
+          onChange={(e) => handleTick}
+        />
+        <div
+          className={`h-[36px] bg-${
+            result[0] as string
+          }-25 rounded-[4px] px-[8px] peer-checked/1:border-[2px] peer-checked/1:border-${
+            result[0]
+          }-600`}
+        >
+          <label htmlFor={text}>
+            <Image
+              className="mr-[8px] inline-block translate-y-[2px] checked:text-white"
+              src={`/icons/${result[1] as string}.png`}
+              alt=""
+              width={20}
+              height={20}
+            ></Image>
+            <p
+              className={`text-small-regular text-${
+                result[0] as string
+              }-600 inline-block translate-y-[5px]`}
+            >
+              {text}
+            </p>
+          </label>
+        </div>
       </div>
     );
   }
