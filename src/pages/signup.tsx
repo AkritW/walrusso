@@ -16,14 +16,16 @@ const Home: NextPage = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setpasswordValue] = useState("");
   const [passwordReValue, setpasswordReValue] = useState("");
-  const [validMail, setvalidMail] = useState(false);
+  const [validMail, setvalidMail] = useState(true);
   const [validPass, setvalidPass] = useState(false);
+  const [validUser, setvalidUser] = useState(true);
   const router = useRouter();
 
   const handleEmailChange = (event: ChangeEvent) => {
+    setvalidUser(true);
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const input = (event.target as HTMLTextAreaElement).value;
-    if (emailPattern.test(input)) {
+    if (emailPattern.test(input) || !input) {
       setEmailValue(input);
       setvalidMail(true);
     } else {
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
   };
 
   const handlePasswordChange = (event: ChangeEvent) => {
+    setvalidUser(true);
     const pass = (event.target as HTMLTextAreaElement).value;
     setpasswordValue(pass);
     if (passwordValue == passwordReValue) {
@@ -42,6 +45,7 @@ const Home: NextPage = () => {
   };
 
   const handlePasswordRepeat = (event: ChangeEvent) => {
+    setvalidUser(true);
     const pass = (event.target as HTMLTextAreaElement).value;
     setpasswordReValue(pass);
     if (passwordValue == passwordReValue) {
@@ -59,9 +63,13 @@ const Home: NextPage = () => {
         password: passwordValue,
       }),
     });
-    const resJson = res.json() as CreateStatus;
+    const resJson = (await res.json()) as CreateStatus;
     const isCreated = resJson.acknowledged;
-    router.push("/team");
+    if (isCreated) {
+      router.push("/team");
+    } else {
+      setvalidUser(false);
+    }
   };
 
   return (
@@ -84,6 +92,9 @@ const Home: NextPage = () => {
         />
         <p className="text-sm-bold text-orange-600" hidden={validMail}>
           Invalid email
+        </p>
+        <p className="text-sm-bold text-orange-600" hidden={validUser}>
+          Invalid credentials
         </p>
         <label
           htmlFor="Password"

@@ -1,47 +1,54 @@
-import { type NextPage } from "next"
-import React, { type ChangeEvent } from "react"
-import Image from "next/image"
-import InitialScreen from "~/pages/components/InitialScreen"
-import Link from "next/link"
-import { useState } from "react"
-import { HeadBar } from "~/pages/components/HeadBar"
-import { useRouter } from "next/router"
+import { type NextPage } from "next";
+import React, { type ChangeEvent } from "react";
+import Image from "next/image";
+import InitialScreen from "~/pages/components/InitialScreen";
+import Link from "next/link";
+import { useState } from "react";
+import { HeadBar } from "~/pages/components/HeadBar";
+import { useRouter } from "next/router";
 
 interface AuthStatus {
-  auth: boolean
+  auth: boolean;
 }
+
 const Home: NextPage = () => {
-  const [emailValue, setEmailValue] = useState("")
-  const [passwordValue, setpasswordValue] = useState("")
-  const [validMail, setvalidMail] = useState(true)
-  const router = useRouter()
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setpasswordValue] = useState("");
+  const [validMail, setvalidMail] = useState(true);
+  const [validUser, setvalidUser] = useState(true);
+  const router = useRouter();
   const handleEmailChange = (event: ChangeEvent) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    const input = (event.target as HTMLTextAreaElement).value
+    setvalidUser(true);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const input = (event.target as HTMLTextAreaElement).value;
     if (emailPattern.test(input) || !input) {
-      setEmailValue(input)
-      setvalidMail(true)
+      setEmailValue(input);
+      setvalidMail(true);
     } else {
-      setvalidMail(false)
+      setvalidMail(false);
     }
-  }
+  };
   const handlePasswordChange = (event: ChangeEvent) => {
-    setpasswordValue((event.target as HTMLTextAreaElement).value)
-  }
+    setpasswordValue((event.target as HTMLTextAreaElement).value);
+  };
 
   const handleSubmit = async () => {
-    console.log("a")
+    console.log("a");
     const res = await fetch("/api/checkAuth/", {
       method: "POST",
       body: JSON.stringify({
         email: emailValue,
         password: passwordValue,
       }),
-    })
-    const resJson = (await res.json()) as AuthStatus
-    const isLogin: boolean = resJson.auth
-    router.push("/team")
-  }
+    });
+    const resJson = (await res.json()) as AuthStatus;
+    const isLogin: boolean = resJson.auth;
+    if (isLogin) {
+      router.push("/team");
+    } else {
+      setvalidUser(false);
+    }
+  };
 
   return (
     <>
@@ -63,6 +70,9 @@ const Home: NextPage = () => {
         />
         <p className="text-sm-bold text-orange-600" hidden={validMail}>
           Invalid email
+        </p>
+        <p className="text-sm-bold text-orange-600" hidden={validUser}>
+          Invalid credentials
         </p>
         <label
           htmlFor="Password"
@@ -105,7 +115,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
