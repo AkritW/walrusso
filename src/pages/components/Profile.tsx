@@ -2,7 +2,7 @@ import Image from 'next/image'
 import {PreferenceBlock} from "~/pages/components/PreferenceBlock";
 import React from "react";
 
-const Profile = ({string}:{string:string}) => {
+const Profile = (string:string) => {
     const image_path = "/teamMembers/Member.png"
     return (
         <div className="flex flex-col items-center justify-start w-screen h-screen backdrop-blur-sm absolute top-[72px] left-0">

@@ -23,9 +23,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <HeadBarSecondary heading={"Quests"} />
-      <div className="flex h-screen w-screen justify-center bg-orange-25">
-        <div className="mt-[16px] flex h-[572px] w-[354px] flex-col">
+      <HeadBarSecondary heading={"Quests"}/>
+      <div className="flex justify-center w-screen h-[688px] bg-orange-25">
+      <div className="mt-[16px] w-[354px] h-[572px] flex flex-col">
           <p className="display-xs-semibold text-gray-700">Quests</p>
           <div className="mt-[16px] flex flex-col">
             <div className="flex h-[64px] w-[100%] flex-row items-center justify-start rounded-[8px] bg-white shadow-md">
