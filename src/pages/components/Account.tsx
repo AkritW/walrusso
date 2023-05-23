@@ -2,12 +2,12 @@ import Image from 'next/image'
 import {PreferenceBlock} from "~/pages/components/PreferenceBlock";
 import React from "react";
 
-const Account = ({userID}:{userID:string}) => {
+const Account = (userID:string) => {
     const image_path = "/teamMembers/Member.png"
     const name = "name"
     const department = "department"
     return (
-        <div className="flex flex-col items-center justify-start w-screen h-screen absolute top-[72px] left-0">
+        <div className="flex flex-col items-center justify-start w-screen h-screen absolute top-[72px] left-0 bg-orange-25">
             <div className="w-[334px] h-[616px] mt-[48px] flex flex-col items-center rounded-[12px] bg-white px-[24px] shadow-2xl">
                 <Image src={image_path} alt={""} width={128} height={128} className="rounded-[64px] mt-[32px]"/>
                 <p className="mt-[12px] display-sm-semibold text-gray-800">{name}</p>

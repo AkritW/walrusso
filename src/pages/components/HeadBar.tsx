@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import {Profile} from "~/pages/components/Profile";
 import {useState} from "react";
+import {Account} from "~/pages/components/Account";
 
 const HeadBar = () => {
     return (
@@ -10,11 +11,12 @@ const HeadBar = () => {
 
 const HeadBarSecondary = ({heading}:{heading:string}) => {
     const [isOpen, setIsOpen] = useState(false)
-        const openPopup = () => {
-        setIsOpen(true)
-      }
-      const closePopup = () => {
-        setIsOpen(false)
+        const togglePopup = () => {
+        if (isOpen == true) {
+            setIsOpen(false)
+        }else {
+            setIsOpen(true)
+        }
       }
     return(
     <>
@@ -24,11 +26,11 @@ const HeadBarSecondary = ({heading}:{heading:string}) => {
                     <Image className="ml-[16px] mr-[12px]" src="/icons/appIcon.png" width="32" height="32" alt=""/>
                     <div className="display-xs-semibold text-white">{heading}</div>
                 </div>
-                <button onClick={} className="col-span-1 justify-self-end">
+                <button onClick={togglePopup} className="col-span-1 justify-self-end">
                     <Image src={"/icons/user.png"} alt={""} width={"32"} height={"32"} className={"mr-[12px]"}/>
                 </button>
             </div>
-            {isOpen &&(Profile("test"))}
+            {isOpen &&(Account("test"))}
         </div>
     </>
     )

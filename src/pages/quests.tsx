@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <>
       <HeadBarSecondary heading={"Quests"}/>
-      <div className="flex justify-center w-screen h-screen bg-orange-25">
+      <div className="flex justify-center w-screen h-[688px] bg-orange-25">
       <div className="mt-[16px] w-[354px] h-[572px] flex flex-col">
           <p className="display-xs-semibold text-gray-700">Quests</p>
           <div className="mt-[16px] flex flex-col">

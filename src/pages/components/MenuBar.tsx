@@ -16,6 +16,12 @@ export default function MenuBar({location}:{location:number}) {
                 <p className={`menu-item text-gray-500 w-[80px] text-center ${location == 3 ? 'text-orange-400' : ''}`}>Rank</p>
                 <p className={`menu-item text-gray-500 w-[80px] text-center ${location == 4 ? 'text-orange-400' : ''}`}>Chats</p>
             </div>
+            <div>
+                <Link href="/team" className="w-[70px] h-[80px] absolute bottom-0 left-[15px]"/>
+                <Link href="/quests" className="w-[70px] h-[80px] absolute bottom-0 left-[110px]"/>
+                <Link href="/leaderboard" className="w-[70px] h-[80px] absolute bottom-0 left-[205px]"/>
+                <Link href="/chats" className="w-[70px] h-[80px] absolute bottom-0 left-[305px]"/>
+            </div>
         </div>
     )
 }
