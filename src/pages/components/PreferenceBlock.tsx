@@ -1,36 +1,70 @@
-import Image from 'next/image'
+import Image from "next/image";
+import React, { useState } from "react";
 
-const PreferenceBlock = (text:string) => {
-    const map = new Map<string, string[]>([
-        ["Asia", ["blue", "suitcase"]],
-        ["Europe", ["blue", "suitcase"]],
-        ["Puzzle", ["yellow", "game"]],
-        ["Football", ["yellow", "game"]],
-        ["Mountain", ["green", "mountain"]],
-        ["Beach", ["green", "mountain"]],
-        ["Pop", ["red", "music"]],
-        ["Jazz", ["red", "music"]],
-        ["Javascript", ["red", "coding"]]
-    ])
-    const components = map.get(text)
-    const classOne = `px-[8px] h-[36px] bg-${components[0]}-25 rounded-[4px]`
-    const classTwo = `text-small-regular text-${components[0]}-600 translate-y-[5px] inline-block`
-    const classThree = `/icons/${components[1]}.png`
-
-    return (
-        <div className={classOne}>
-            <Image className="translate-y-[2px] inline-block mr-[8px]" src={classThree} alt="" width={20} height={20}></Image>
-            <p className={classTwo}>{text}</p>
-        </div>
-    )
+interface MyComponentProps {
+  text: string;
 }
 
-export {PreferenceBlock}
+const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
+  const [ticks, updateTicks] = useState([]);
+  const handleTick = () => {
+    updateTicks(ticks.push((event.target as Element).id));
+    console.log(ticks);
+  };
 
-// List of items
-//
-// Iterate through, create component. Variables [item]
-//
-// Maps items against -> Color, Icon
-//
-// [{items}:[color, icon]]
+  const map = new Map<string, string[]>([
+    ["Asia", ["blue", "suitcase"]],
+    ["Europe", ["blue", "suitcase"]],
+    ["RPG", ["yellow", "console"]],
+    ["Puzzle", ["yellow", "console"]],
+    ["Mountain", ["green", "mountain"]],
+    ["Beach", ["green", "mountain"]],
+    ["Pop", ["red", "music"]],
+    ["Jazz", ["red", "music"]],
+    ["Python", ["red", "chip"]],
+    ["Javascript", ["red", "chip"]],
+    ["Run", ["yellow", "-"]],
+    ["Football", ["yellow", "-"]],
+    ["Yoga", ["yellow", "-"]],
+    ["Vintage car", ["green", "car"]],
+    ["Sport car", ["green", "car"]],
+  ]);
+  const result = map.get(text);
+  if (result[1] == "-") {
+    return (
+      <input
+        type={"checkbox"}
+        onChange={handleTick}
+        className={`h-[36px] bg-${result[0]}-25 shrink-0 rounded-[4px] px-[8px]`}
+      >
+        <p
+          className={`text-small-regular text-${result[0]}-600 inline-block translate-y-[5px]`}
+        >
+          {text}
+        </p>
+      </input>
+    );
+  } else {
+    return (
+      <div className={`h-[36px] bg-${result[0]}-25 rounded-[4px] px-[8px]`}>
+        <input id={text} type="checkbox" onChange={handleTick} hidden />
+        <label htmlFor={text}>
+          <Image
+            className="mr-[8px] inline-block translate-y-[2px] checked:text-white"
+            src={`/icons/${result[1]}.png`}
+            alt=""
+            width={20}
+            height={20}
+          ></Image>
+          <p
+            className={`text-small-regular text-${result[0]}-600 inline-block translate-y-[5px]`}
+          >
+            {text}
+          </p>
+        </label>
+      </div>
+    );
+  }
+};
+
+export default MyComponent;
