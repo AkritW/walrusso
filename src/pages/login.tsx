@@ -5,20 +5,20 @@ import InitialScreen from "~/pages/components/InitialScreen"
 import Link from "next/link"
 import { useState } from "react"
 import { HeadBar } from "~/pages/components/HeadBar"
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router"
 
 interface AuthStatus {
-      auth: boolean
-    }
+  auth: boolean
+}
 const Home: NextPage = () => {
   const [emailValue, setEmailValue] = useState("")
   const [passwordValue, setpasswordValue] = useState("")
-  const [validMail, setvalidMail] = useState(false)
-  const router = useRouter();
+  const [validMail, setvalidMail] = useState(true)
+  const router = useRouter()
   const handleEmailChange = (event: ChangeEvent) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    const input = (((event.target as HTMLTextAreaElement).value))
-    if (emailPattern.test(input)){
+    const input = (event.target as HTMLTextAreaElement).value
+    if (emailPattern.test(input) || !input) {
       setEmailValue(input)
       setvalidMail(true)
     } else {
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
     })
     const resJson = (await res.json()) as AuthStatus
     const isLogin: boolean = resJson.auth
-    router.push('/team')
+    router.push("/team")
   }
 
   return (
@@ -61,10 +61,12 @@ const Home: NextPage = () => {
           onChange={handleEmailChange}
           className=" h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4 placeholder-gray-300"
         />
-        <p className="text-sm-bold text-orange-600" hidden={validMail}>Invalid email</p>
+        <p className="text-sm-bold text-orange-600" hidden={validMail}>
+          Invalid email
+        </p>
         <label
           htmlFor="Password"
-          className="mt-[20px] text-sm-semibold mb-[6px] text-gray-600"
+          className="text-sm-semibold mb-[6px] mt-[20px] text-gray-600"
         >
           Password
         </label>
@@ -75,7 +77,11 @@ const Home: NextPage = () => {
           onChange={handlePasswordChange}
           className="mb-[24px] h-[44px] w-full rounded-[8px] border-[1px] border-gray-100 px-4 placeholder-gray-300"
         />
-        <button onClick={handleSubmit} className="button-primary mb-[16px]" disabled={!validMail}>
+        <button
+          onClick={handleSubmit}
+          className="button-primary mb-[16px]"
+          disabled={!validMail}
+        >
           Log in
         </button>
         <div className="button-secondary mb-[32px] flex flex-row items-center justify-center">
