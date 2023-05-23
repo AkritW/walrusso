@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setpasswordValue] = useState("");
   const [passwordReValue, setpasswordReValue] = useState("");
-  const [validMail, setvalidMail] = useState(false);
+  const [validMail, setvalidMail] = useState(true);
   const [validPass, setvalidPass] = useState(false);
   const [validUser, setvalidUser] = useState(true);
   const router = useRouter();
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     setvalidUser(true);
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const input = (event.target as HTMLTextAreaElement).value;
-    if (emailPattern.test(input)) {
+    if (emailPattern.test(input) || !input) {
       setEmailValue(input);
       setvalidMail(true);
     } else {
@@ -63,13 +63,11 @@ const Home: NextPage = () => {
         password: passwordValue,
       }),
     });
-    const resJson = res.json() as CreateStatus;
+    const resJson = (await res.json()) as CreateStatus;
     const isCreated = resJson.acknowledged;
     if (isCreated) {
-      console.log("logged");
       router.push("/team");
     } else {
-      console.log("Out");
       setvalidUser(false);
     }
   };
