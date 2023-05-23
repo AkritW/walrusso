@@ -12,8 +12,8 @@ const Home: NextPage = () => {
         }
         return "tags"
     }
-    // const manyTags = createTags(["string", "string"])
-    const manyTags = "banana"
+    const manyTags = [PreferenceBlock("Pop"), PreferenceBlock("Mountain")]
+    // const manyTags = "banana"
     return (
       <>
         <HeadBar/>
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
             <div className="display-xs-bold mb-[32px] text-gray-900">Preferences</div>
             <div className="text-md-regular mb-[32px] text-grey-900">Select topics that match your preferences</div>
             <div className="mx-[25px] w-[340px] flex flex-row justify-center gap-[8px]">
-                <div>{manyTags}</div>
+                <div className="flex flex-row gap-[8px]">{manyTags}</div>
             </div>
             </div>
             <button className="button-primary !w-[350px] absolute left-[20px] bottom-[178px]">Done</button>
