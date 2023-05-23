@@ -7,8 +7,8 @@ const map = new Map<string, string[]>([
         ["music", ["red", "music"]],
         ["computer", ["red", "coding"]]
     ])
-const PreferenceBlock = ({category, text}:{category:string, text:string}) => {
-    const components = map.get(category)
+const PreferenceBlock = ({text}:{text:string}) => {
+    const components = map.get(text)
     const classOne = `px-[8px] h-[36px] bg-${components[0]}-25 rounded-[4px]`
     const classTwo = `text-small-regular text-${components[0]}-600 translate-y-[5px] inline-block`
 
