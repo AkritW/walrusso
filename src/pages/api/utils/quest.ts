@@ -1,6 +1,7 @@
 export default interface Quest {
   name: string
   point: string
-  time: Date
-  assignTo: string
+  type: "team" | "individual"
+  assignTime?: Date
+  assignTo?: string
 }
