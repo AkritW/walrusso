@@ -18,6 +18,7 @@ const MyComponent: React.FC<MyComponentProps> = ({ text }) => {
     ["RPG", ["yellow", "console"]],
     ["Puzzle", ["yellow", "console"]],
     ["Mountain", ["green", "mountain"]],
+    ["Hiking", ["green", "mountain"]],
     ["Beach", ["green", "mountain"]],
     ["Pop", ["red", "music"]],
     ["Jazz", ["red", "music"]],
