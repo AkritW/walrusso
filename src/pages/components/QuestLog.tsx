@@ -1,17 +1,30 @@
 import Image from "next/image";
-import { PreferenceBlock } from "~/pages/components/PreferenceBlock";
 import React from "react";
 
-const QuestLog = ({ questID }: { questID: string }) => {
-  const questName = "Running total of 100 Kilometers";
+type Handler = (name: string) => void;
+
+interface Props {
+  name: string;
+  close: Handler;
+}
+
+const QuestLog: React.FC<Props> = (props) => {
   const deadLine = "Deadline : 12 Days 10:40 hr [10/Jun/2023 12:00] ";
+  const handleClick = () => {
+    props.close("1");
+    console.log("Supposed to be closed");
+  };
+
   return (
     <div className="absolute left-0 top-[72px] flex h-screen w-screen flex-col items-center justify-start backdrop-blur-sm">
-      <div className="mt-[48px] flex h-[446px] w-[334px] flex-col items-center rounded-[12px] bg-white px-[24px]">
+      <div className="relative mt-[48px] flex h-[446px] w-[334px] flex-col items-center rounded-[12px] bg-white px-[24px] shadow-xl">
+        <button className="fixed right-2 top-2 z-50" onClick={handleClick}>
+          <Image src="/icons/cross.png" alt="" height={16} width={16} />
+        </button>
         <p className="text-lg-bold mb-[8px] mt-[16px] self-start text-gray-600">
           Team Quest
         </p>
-        <p className="text-xl-bold self-start text-gray-900">{questName}</p>
+        <p className="text-xl-bold self-start text-gray-900">{props.name}</p>
         <p className="text-xs-medium mb-[18px] mt-[16px] self-start text-gray-900">
           {deadLine}
         </p>
