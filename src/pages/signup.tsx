@@ -66,7 +66,7 @@ const Home: NextPage = () => {
     const resJson = (await res.json()) as CreateStatus;
     const isCreated = resJson.acknowledged;
     console.log(isCreated);
-    router.push("/team");
+    router.push("/preferences");
   };
 
   return (

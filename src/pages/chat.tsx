@@ -94,7 +94,7 @@ const Home: NextPage = () => {
       <div className="relative h-[772px] w-screen bg-orange-100">
         <div className="relative flex h-[72px] w-screen items-center justify-center bg-white">
           <p className="display-sm-regular text-gray-700">Team Pig</p>
-          <Link href="">
+          <Link href="/chats">
             <Image
               src="/icons/arrow.png"
               alt=""
@@ -110,7 +110,7 @@ const Home: NextPage = () => {
             "Member",
             chat && chat[0]?.text,
             chat && chat[1]?.text
-          )} 
+          )}
           {singleText(chat && chat[2]?.from, "Member-2", chat && chat[2]?.text)}
           {selfText("Sounds good!")}
         </div>
