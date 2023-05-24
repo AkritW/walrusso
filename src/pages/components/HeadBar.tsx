@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HeadBar = () => {
   return (
-    <div className="display-xs-semibold fixed flex h-[72px] w-screen items-center justify-center bg-red-500 text-white">
+    <div className="display-xs-semibold flex h-[72px] w-screen items-center justify-center bg-red-500 text-white">
       WALRUSSO
     </div>
   );
