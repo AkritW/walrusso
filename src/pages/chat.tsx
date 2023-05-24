@@ -106,13 +106,13 @@ const Home: NextPage = () => {
         </div>
         <div className="mx-[16px] mt-[24px] flex flex-col space-y-[16px]">
           {doubleText(
-            "Candice",
+            chat && chat[0].from,
             "Member",
-            "When do we want to have dinner?",
-            "16:00 Tuesday?"
-          )}
+            chat && chat[0]?.text,
+            chat && chat[1]?.text
+          )} 
+          {singleText(chat && chat[2]?.from, "Member-2", chat && chat[2]?.text)}
           {selfText("Sounds good!")}
-          {singleText("Arm", "Member-2", "Wassup Beijing")}
         </div>
         <div className="absolute bottom-[100px] ml-[16px] flex h-[44px] w-[358px] items-center rounded-[35px] bg-white text-center">
           <p className="text-lg-regular ml-[16px] text-gray-500">Aa</p>
