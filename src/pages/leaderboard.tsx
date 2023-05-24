@@ -1,43 +1,72 @@
-import { type NextPage } from "next";
-import MenuBar from "~/pages/components/MenuBar";
-import { HeadBarSecondary } from "~/pages/components/HeadBar";
-import Image from "next/image";
+import { HeadBarSecondary } from "~/pages/components/HeadBar"
+import Image from "next/image"
+import { useState, useEffect } from "react"
+import { type NextPage } from "next"
+import MenuBar from "./components/MenuBar"
+
+interface _LeaderboardAPIResponse {
+  name: string
+  score: number
+}
+
+type LeaderboardAPIResponse = Array<_LeaderboardAPIResponse>
 
 const Home: NextPage = () => {
-  const demo = [
-    ["pig", 152],
-    ["cow", 145],
-    ["rabbit", 70],
-    ["dog", 41],
-  ];
+  const [leaderboard, setLeaderboard] = useState<LeaderboardAPIResponse | null>(
+    null
+  )
   const heightCalculation = ({
     x,
     y,
     z,
   }: {
-    x: number;
-    y: number;
-    z: number;
+    x: number
+    y: number
+    z: number
   }) => {
     return [
       (150 * (y / x)).toFixed(0),
       (150 * (z / x)).toFixed(0),
       (150 * (y / x) - 25).toFixed(0),
       (150 * (z / x) - 25).toFixed(0),
-    ];
-  };
-  const heights = heightCalculation({
-    x: demo[0][1],
-    y: demo[1][1],
-    z: demo[2][1],
-  });
-  const a = { height: Number(heights[0]) };
-  const b = { height: Number(heights[1]) };
-  const c = { bottom: Number(heights[2]) };
-  const d = { bottom: Number(heights[3]) };
-  console.log(heights[0]);
+    ]
+  }
 
-  const dates = "1 May 2023 - 31 May 2023";
+
+  const heights = leaderboard
+    ? heightCalculation({
+        x: leaderboard[0]?.score as unknown as number,
+        y: leaderboard[1]?.score as unknown as number,
+        z: leaderboard[2]?.score as unknown as number,
+      })
+    : null
+
+  const a = heights
+    ? { height: Number(heights[0]) }
+    : { height: 0 }
+  const b = heights
+    ? { height: Number(heights[1]) }
+    : { height: 0 }
+  const c = heights
+    ? { height: Number(heights[2]) }
+    : { height: 0 }
+  const d = heights
+    ? { height: Number(heights[3]) }
+    : { height: 0 }
+
+
+  useEffect(() => {
+    void (async () => {
+      const response = await fetch("/api/getLeaderboard")
+      console.log(response)
+      const data = (await response.json()) as LeaderboardAPIResponse
+      console.log(data)
+
+      setLeaderboard(data)
+    })()
+  }, [])
+
+  const dates = "1 May 2023 - 31 May 2023"
   return (
     <>
       <HeadBarSecondary heading={"Leaderboard"} />
@@ -48,7 +77,7 @@ const Home: NextPage = () => {
         <div className="grid w-[214px] grid-cols-3 justify-items-center">
           <div className="relative flex h-[100%] flex-col place-items-center justify-end place-self-start">
             <Image
-              src={`/icons/${demo[1][0]}.png`}
+              src={`/icons/${leaderboard && leaderboard[1].name}.png`}
               alt=""
               width={56}
               height={56}
@@ -58,30 +87,30 @@ const Home: NextPage = () => {
               style={a}
             />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              2
+              { leaderboard && leaderboard[1].score}
             </p>
             <p className="text-xl-bold absolute text-white" style={c}>
-              {demo[1][1]}
+              {leaderboard && leaderboard[1].name}
             </p>
           </div>
           <div className="relative flex flex-col place-items-center justify-end">
             <Image
-              src={`/icons/${demo[0][0]}.png`}
+              src={`/icons/${leaderboard && leaderboard[0].name}.png`}
               alt=""
               width={56}
               height={56}
             />
             <div className="mt-[8px] h-[150px] w-[64px] rounded-t-[4px] bg-orange-500" />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              1
+              {leaderboard && leaderboard[0].score}
             </p>
             <p className="text-xl-bold absolute bottom-[125px] text-white">
-              {demo[0][1]}
+              {leaderboard && leaderboard[0].name}
             </p>
           </div>
           <div className="relative flex h-[100%] flex-col place-items-center justify-end place-self-end">
             <Image
-              src={`/icons/${demo[2][0]}.png`}
+              src={`/icons/${leaderboard && leaderboard[2].name}.png`}
               alt=""
               width={56}
               height={56}
@@ -91,10 +120,10 @@ const Home: NextPage = () => {
               style={b}
             />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              3
+              { leaderboard && leaderboard[2].score}
             </p>
             <p className="text-xl-bold absolute text-white" style={d}>
-              {demo[2][1]}
+              {leaderboard && leaderboard[2].name}
             </p>
           </div>
         </div>
@@ -103,15 +132,19 @@ const Home: NextPage = () => {
             <p className="display-xs-semibold mr-[16px] text-gray-500">04</p>
             <div className="flex h-[72px] w-[274px] flex-row place-items-center rounded-[12px] bg-gray-25">
               <Image
-                src={`/icons/${demo[3][0]}.png`}
+                src={`/icons/${leaderboard && leaderboard[3].name}.png`}
                 width={56}
                 height={56}
                 alt=""
                 className="ml-[12px] mr-[8px]"
               />
               <div className="mr-auto">
-                <p className="text-lg-bold text-gray-300">Team {demo[3][0]}</p>
-                <p className="text-md-medium text-gray-300">{demo[3][1]} pts</p>
+                <p className="text-lg-bold text-gray-300">
+                  Team {leaderboard && leaderboard[3].name}
+                </p>
+                <p className="text-md-medium text-gray-300">
+              { leaderboard && leaderboard[3].score}
+                </p>
               </div>
               <p className="text-xl-bold mr-[8px] text-gray-400">+1</p>
               <Image
@@ -127,7 +160,7 @@ const Home: NextPage = () => {
       </div>
       <MenuBar location={3} />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

@@ -63,9 +63,9 @@ const Home: NextPage = () => {
         password: passwordValue,
       }),
     });
-    const resJson = await res.json() as CreateStatus;
+    const resJson = (await res.json()) as CreateStatus;
     const isCreated = resJson.acknowledged;
-    console.log(isCreated)
+    console.log(isCreated);
     router.push("/team");
   };
 
@@ -129,16 +129,6 @@ const Home: NextPage = () => {
         >
           Sign up
         </button>
-        <div className="button-secondary mb-[32px] flex flex-row items-center justify-center">
-          <Image
-            src="/icons/GoogleIcon.png"
-            alt=""
-            width="24"
-            height="24"
-            className="mr-[12px]"
-          />
-          <div>Sign up with Google</div>
-        </div>
         <div className="text-sm-regular text-center text-gray-500">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           <div>
