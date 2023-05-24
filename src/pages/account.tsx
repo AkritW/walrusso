@@ -2,14 +2,15 @@ import { type NextPage } from "next";
 import MenuBar from "~/pages/components/MenuBar";
 import {HeadBarSecondary} from "~/pages/components/HeadBar";
 import {Account} from "~/pages/components/Account";
+import {useEffect, useState } from 'react'
+
+
 
 const Home: NextPage = () => {
   return (
     <>
       <HeadBarSecondary heading={"Account"}/>
-        <div className="w-screen h-screen bg-orange-25"></div>
-        <div className="w-screen h-screen bg-green-600">banana</div>
-        <Account userID={"test"}/>
+        <Account userId={"4647cd80950a4e57b9a1bf258f7879a49d9f5a84a30163283358367450c0373a"}/>
       <MenuBar location={5}/>
     </>
   );
