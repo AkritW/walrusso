@@ -94,16 +94,6 @@ const Home: NextPage = () => {
         >
           Log in
         </button>
-        <div className="button-secondary mb-[32px] flex flex-row items-center justify-center">
-          <Image
-            src="/icons/GoogleIcon.png"
-            alt=""
-            width="24"
-            height="24"
-            className="mr-[12px]"
-          />
-          <div>Log in with Google</div>
-        </div>
         <div className="text-sm-regular text-center text-gray-500">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           <div>
