@@ -35,7 +35,7 @@ const Account: React.FC<Props> = (props) => {
 
   const manyTags = account && account.preferences.map((e) => <MyComponent text={e} key={e} />)
   return (
-    <div className="absolute left-0 top-[72px] flex h-screen w-screen flex-col items-center justify-start bg-orange-25">
+    <div className="absolute left-0 top-[72px] flex h-[772px] w-screen flex-col items-center justify-start bg-orange-25">
       <div className="mt-[48px] flex h-[616px] w-[334px] flex-col items-center rounded-[12px] bg-white px-[24px] shadow-2xl">
         <Image
           src={`/teamMembers/member.png`}
@@ -54,7 +54,9 @@ const Account: React.FC<Props> = (props) => {
         <p className="text-md-bold mb-[8px] mt-[24px] self-start text-gray-800">
           {account && account.preferences}
         </p>
-        <div className="mb-[24px] flex flex-row justify-start">{manyTags}</div>
+        <div className="mb-[24px] flex w-[100%] flex-row justify-start gap-[8px]">
+          {manyTags}
+        </div>
         <p className="text-md-bold self-start text-gray-800">Bio</p>
         <p className="text-xs-regular self-start text-gray-800">{account && account.bio}</p>
       </div>

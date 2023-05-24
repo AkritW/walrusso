@@ -1,10 +1,7 @@
 import { type NextPage } from "next";
 import MenuBar from "~/pages/components/MenuBar";
-import {HeadBarSecondary} from "~/pages/components/HeadBar";
-import {Account} from "~/pages/components/Account";
-import {useEffect, useState } from 'react'
-
-
+import { HeadBarSecondary } from "~/pages/components/HeadBar";
+import { Account } from "~/pages/components/Account";
 
 const Home: NextPage = () => {
   return (
