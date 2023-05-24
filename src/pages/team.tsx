@@ -1,26 +1,28 @@
-import { type NextPage } from "next";
-import MenuBar from "~/pages/components/MenuBar";
-import { HeadBarSecondary } from "~/pages/components/HeadBar";
-import Image from "next/image";
-import React, { useState } from "react";
-import { member } from "~/pages/components/Profile";
+import { type NextPage } from "next"
+import MenuBar from "~/pages/components/MenuBar"
+import { HeadBarSecondary } from "~/pages/components/HeadBar"
+import Image from "next/image"
+import React, { useState, useEffect } from "react"
+import { member } from "~/pages/components/Profile"
 
-interface teamInfo {
-  name: string;
-  imagePath: string;
+interface _TeamAPIResponse {
+  name: string
+  imagePath: string
 }
 
-const demo = [
-  ["Olivia", "Member"],
-  ["Phoenix", "Member-0"],
-  ["Lana", "Member-1"],
-  ["Demi", "Member-2"],
-];
+type TeamAPIResponse = Array<_TeamAPIResponse>
+
+// const demo = [
+//   ["Olivia", "Member"],
+//   ["Phoenix", "Member-0"],
+//   ["Lana", "Member-1"],
+//   ["Demi", "Member-2"],
+// ]
 
 const Home: NextPage = () => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState("")
 
-  const MyComponent: React.FC<teamInfo> = ({ name, imagePath }) => {
+  const MyComponent: React.FC<_TeamAPIResponse> = ({ name, imagePath }) => {
     return (
       <>
         <input type="checkbox" id={name} onClick={handleClick} hidden />
@@ -34,23 +36,39 @@ const Home: NextPage = () => {
           <div className="text-sm-regular mt-[8px]">{name}</div>
         </label>
       </>
-    );
-  };
+    )
+  }
   const handleClick = () => {
     if (content == "") {
-      setContent(member((event.target as Element).id));
+      setContent(member((event.target as Element).id))
     } else {
-      setContent("");
+      setContent("")
     }
-  };
+  }
 
-  const profiles = demo.map((e) => (
-    <MyComponent
-      name={e[0] as string}
-      imagePath={e[1] as string}
-      key={e[0] as string}
-    />
-  ));
+  const [team, setTeam] = useState<TeamAPIResponse | null>(null)
+
+  useEffect(() => {
+    void (async () => {
+      const response = await fetch("/api/getTeam")
+      const data = (await response.json()) as TeamAPIResponse
+
+      console.log(data)
+      setTeam(data)
+    })()
+  }, [])
+
+  const profiles = team ? team.map((t: _TeamAPIResponse) => {
+    {
+      return (
+        <MyComponent
+          name={t?.name}
+          imagePath={t?.imagePath}
+          key={t?.imagePath}
+        />
+      )
+    }
+  }) : null
 
   return (
     <>
@@ -65,13 +83,13 @@ const Home: NextPage = () => {
             From 1 - 31 May 2023
           </div>
           <div className="mt-[16px] grid grid-cols-4 gap-x-[24px] gap-y-[32px]">
-            {profiles}
+            {team && profiles}
           </div>
         </div>
       </div>
       <MenuBar location={1} />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
