@@ -1,10 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
+type Handler = (name: string) => void;
+
 interface Props {
   time: Date;
   text: string;
   point: string;
+  callback: Handler;
 }
 
 const Quest: React.FC<Props> = (props) => {
@@ -21,7 +24,10 @@ const Quest: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="mb-[12px] flex w-[100%] flex-row items-center justify-start rounded-[8px] bg-white py-[10px] shadow-md">
+    <div
+      onClick={() => props.callback(props.text)}
+      className="mb-[12px] flex w-[100%] flex-row items-center justify-start rounded-[8px] bg-white py-[10px] shadow-md"
+    >
       <Image
         className="mx-[16px]"
         src="/icons/team_dark.png"
