@@ -1,37 +1,36 @@
-import { HeadBarSecondary } from "~/pages/components/HeadBar"
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { type NextPage } from "next"
-import MenuBar from "./components/MenuBar"
+import { HeadBarSecondary } from "~/pages/components/HeadBar";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { type NextPage } from "next";
+import MenuBar from "./components/MenuBar";
 
 interface _LeaderboardAPIResponse {
-  name: string
-  score: number
+  name: string;
+  score: number;
 }
 
-type LeaderboardAPIResponse = Array<_LeaderboardAPIResponse>
+type LeaderboardAPIResponse = Array<_LeaderboardAPIResponse>;
 
 const Home: NextPage = () => {
   const [leaderboard, setLeaderboard] = useState<LeaderboardAPIResponse | null>(
     null
-  )
+  );
   const heightCalculation = ({
     x,
     y,
     z,
   }: {
-    x: number
-    y: number
-    z: number
+    x: number;
+    y: number;
+    z: number;
   }) => {
     return [
       (150 * (y / x)).toFixed(0),
       (150 * (z / x)).toFixed(0),
-      (150 * (y / x) - 25).toFixed(0),
-      (150 * (z / x) - 25).toFixed(0),
-    ]
-  }
-
+      (150 * (y / x) - 5).toFixed(0),
+      (150 * (z / x) - 5).toFixed(0),
+    ];
+  };
 
   const heights = leaderboard
     ? heightCalculation({
@@ -39,34 +38,25 @@ const Home: NextPage = () => {
         y: leaderboard[1]?.score as unknown as number,
         z: leaderboard[2]?.score as unknown as number,
       })
-    : null
+    : null;
 
-  const a = heights
-    ? { height: Number(heights[0]) }
-    : { height: 0 }
-  const b = heights
-    ? { height: Number(heights[1]) }
-    : { height: 0 }
-  const c = heights
-    ? { height: Number(heights[2]) }
-    : { height: 0 }
-  const d = heights
-    ? { height: Number(heights[3]) }
-    : { height: 0 }
-
+  const a = heights ? { height: Number(heights[0]) } : { height: 0 };
+  const b = heights ? { height: Number(heights[1]) } : { height: 0 };
+  const c = heights ? { height: Number(heights[2]) } : { height: 0 };
+  const d = heights ? { height: Number(heights[3]) } : { height: 0 };
 
   useEffect(() => {
     void (async () => {
-      const response = await fetch("/api/getLeaderboard")
-      console.log(response)
-      const data = (await response.json()) as LeaderboardAPIResponse
-      console.log(data)
+      const response = await fetch("/api/getLeaderboard");
+      console.log(response);
+      const data = (await response.json()) as LeaderboardAPIResponse;
+      console.log(data);
 
-      setLeaderboard(data)
-    })()
-  }, [])
+      setLeaderboard(data);
+    })();
+  }, []);
 
-  const dates = "1 May 2023 - 31 May 2023"
+  const dates = "1 May 2023 - 31 May 2023";
   return (
     <>
       <HeadBarSecondary heading={"Leaderboard"} />
@@ -87,10 +77,10 @@ const Home: NextPage = () => {
               style={a}
             />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              { leaderboard && leaderboard[1].score}
+              2
             </p>
             <p className="text-xl-bold absolute text-white" style={c}>
-              {leaderboard && leaderboard[1].name}
+              {leaderboard && leaderboard[1].score}
             </p>
           </div>
           <div className="relative flex flex-col place-items-center justify-end">
@@ -102,10 +92,10 @@ const Home: NextPage = () => {
             />
             <div className="mt-[8px] h-[150px] w-[64px] rounded-t-[4px] bg-orange-500" />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              {leaderboard && leaderboard[0].score}
+              1
             </p>
             <p className="text-xl-bold absolute bottom-[125px] text-white">
-              {leaderboard && leaderboard[0].name}
+              {leaderboard && leaderboard[0].score}
             </p>
           </div>
           <div className="relative flex h-[100%] flex-col place-items-center justify-end place-self-end">
@@ -120,10 +110,10 @@ const Home: NextPage = () => {
               style={b}
             />
             <p className="display-sm-semibold absolute bottom-[3px] text-white">
-              { leaderboard && leaderboard[2].score}
+              3
             </p>
             <p className="text-xl-bold absolute text-white" style={d}>
-              {leaderboard && leaderboard[2].name}
+              {leaderboard && leaderboard[2].score}
             </p>
           </div>
         </div>
@@ -143,7 +133,7 @@ const Home: NextPage = () => {
                   Team {leaderboard && leaderboard[3].name}
                 </p>
                 <p className="text-md-medium text-gray-300">
-              { leaderboard && leaderboard[3].score}
+                  {leaderboard && leaderboard[3].score}
                 </p>
               </div>
               <p className="text-xl-bold mr-[8px] text-gray-400">+1</p>
@@ -160,7 +150,7 @@ const Home: NextPage = () => {
       </div>
       <MenuBar location={3} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
