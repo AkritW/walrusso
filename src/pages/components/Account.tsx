@@ -46,10 +46,10 @@ const Account: React.FC<Props> = (props) => {
         />
         <p className="display-sm-semibold mt-[12px] text-gray-800">{account && account.name}</p>
         <p className="text-md-bold mt-[24px] self-start text-gray-800">
-          {account && account.department}
+          Department
         </p>
         <p className="text-lg-medium mt-[8px] self-start text-gray-800">
-          {account && account.occupation}
+          {account && account.department}
         </p>
         <p className="text-md-bold mb-[8px] mt-[24px] self-start text-gray-800">
           {account && account.preferences}
