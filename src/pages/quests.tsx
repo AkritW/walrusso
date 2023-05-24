@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Quest from "./components/Quest";
 import MenuBar from "./components/MenuBar";
 import { type NextPage } from "next";
-import Image from "next/image";
+import { QuestLog } from "~/pages/components/QuestLog";
 
 interface _QuestAPIResponse {
   name: string;
@@ -15,6 +15,7 @@ type QuestAPIResponse = Array<_QuestAPIResponse>;
 
 const Home: NextPage = () => {
   const [quests, setQuests] = useState<QuestAPIResponse | null>(null);
+  const [content, setContent] = useState<JSX.Element | null>(null);
 
   useEffect(() => {
     void (async () => {
@@ -26,11 +27,20 @@ const Home: NextPage = () => {
     })();
   }, []);
 
+  const showQuest = (name: string) => {
+    setContent(<QuestLog name={name} close={hideQuest} />);
+  };
+
+  const hideQuest = () => {
+    setContent(null);
+  };
+
   return (
     <>
       <div className="fixed">
         <HeadBarSecondary heading={"Quests"} />
       </div>
+      {content}
       <div className="h-[72px]" />
       <div className="flex h-[688px] w-screen justify-center bg-orange-25">
         <div className="mt-[16px] flex h-[572px] w-[354px] flex-col">
@@ -43,6 +53,7 @@ const Home: NextPage = () => {
                   time={new Date()}
                   text={quest.name}
                   point={quest.point.toString()}
+                  callback={showQuest}
                 />
               ))}
             <div className="h-[80px]" />
